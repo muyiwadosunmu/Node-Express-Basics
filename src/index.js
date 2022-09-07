@@ -1,5 +1,6 @@
 const express = require("express");
 const groceriesRoute = require("./routes/groceries");
+const marketsRoute = require("./routes/markets");
 
 const app = express();
 
@@ -12,7 +13,9 @@ app.use((req,res, next) => {
     console.log(`${req.method}:${req.url}`);
     next()
 });
-app.use(groceriesRoute);
+
+app.use("/api/v1/groceries", groceriesRoute);
+app.use("/api/v1/markets", marketsRoute);
 
 app.listen(PORT, () => console.log(`Running express server on port ${PORT}`));
 
