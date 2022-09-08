@@ -23,6 +23,7 @@ router.post("/register", async (req, res) => {
     res.status(400).send({ msg: "User already exists" });
   } else {
     const newUser = await User.create({ username, password, email });
+    res.sendStatus(201);
   }
 });
 
