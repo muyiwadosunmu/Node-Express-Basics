@@ -18,9 +18,6 @@ const groceryList = [
 ];
 
 router.get("/", (req, res) => {
-  res.cookie("visuted", true, {
-    maxAge: 10000,
-  })
   res.send(groceryList);
 });
 
@@ -37,24 +34,24 @@ router.post("/", (req, res) => {
   res.send(201);
 });
 
-router.get("/shopping/cart", (req,res) => {
+router.get("/shopping/cart", (req, res) => {
   const { cart } = req.session;
   if (!cart) {
-    res.send("You have no cart session")
+    res.send("You have no cart session");
   } else {
     res.send(cart);
   }
 });
-router.post("/shopping/cart/item", (req,res) => {
+router.post("/shopping/cart/item", (req, res) => {
   const { item, quantity } = req.body;
   const cartItem = { item, quantity };
   const { cart } = req.session;
-  if ( cart ) {
+  if (cart) {
     req.session.cart.items.push(cartItem);
   } else {
     req.session.cart = {
-      items : [cartItem],
-    }
+      items: [cartItem],
+    };
   }
   res.send(201);
 });
