@@ -1,12 +1,11 @@
 // Libraries express and external ones
 const express = require("express");
-const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const groceriesRoute = require("./routes/groceries");
 const marketsRoute = require("./routes/markets");
 const authRoute = require("./routes/auth");
-require("./database/index")
+require("./database");
 
 // Instanciation of express
 const app = express();
