@@ -1,5 +1,5 @@
 const { Router, response } = require("express");
-
+const User = require("../database/schemas/User");
 const router = Router();
 
 router.post("/login", (req, res) => {
@@ -14,5 +14,10 @@ router.post("/login", (req, res) => {
     }
   } else res.send(401)
 });
+
+router.post("/register", (req,res) => {
+    const { username, password, email } = req.body;  
+
+})
 
 module.exports = router;
