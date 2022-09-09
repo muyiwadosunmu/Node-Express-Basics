@@ -6,14 +6,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  password : {
+  password: {
     type: mongoose.SchemaTypes.String,
-    required: true, 
+    required: true,
   },
   createdAt: {
     type: mongoose.SchemaTypes.Date,
     required: true,
     default: new Date(),
-  }
+  },
 });
 module.exports = mongoose.model("users", UserSchema);
