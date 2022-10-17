@@ -1,10 +1,10 @@
 const { Router, response } = require("express");
+const passport = require("passport");
 const User = require("../database/schemas/User");
 const router = Router();
 const { hashPassword, comparePassword } = require("../utils/helpers");
 
-
-router.post("/login", async (req, res) => {
+/* router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.sendStatus(400);
   const userDB = await User.findOne({ email });
@@ -18,6 +18,11 @@ router.post("/login", async (req, res) => {
     console.log("Authentication Failed");
     return res.sendStatus(401);
   }
+}); */
+
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  console.log("Logged In");
+  res.send(200);
 });
 
 router.post("/register", async (req, res) => {
