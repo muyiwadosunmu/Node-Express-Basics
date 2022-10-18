@@ -8,7 +8,7 @@ const { hashPassword, comparePassword } = require("../utils/helpers");
   const { email, password } = req.body;
   if (!email || !password) return res.sendStatus(400);
   const userDB = await User.findOne({ email });
-  if (!userDB) return res.sendStatus(401);
+  if (!userDB) return res.sendStatus(401);  //Unauthorized
   const isValid = comparePassword(password, userDB.password);
   if (isValid) {
     console.log("Authentication Successful");
@@ -33,7 +33,7 @@ router.post("/register", async (req, res) => {
   } else {
     const password = hashPassword(req.body.password);
     console.log(password);
-    const newUser = await User.create({ username, password, email });
+    const newUser = await User.create({ password, email });
     res.sendStatus(201);
   }
 });
