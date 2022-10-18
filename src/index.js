@@ -1,5 +1,5 @@
 
-// Libraries express and external ones
+// Libraries, express and external ones
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -14,7 +14,7 @@ require("./database");
 
 // Instanciation of express
 const app = express();
-
+ 
 const PORT = 3000;
 
 
@@ -44,11 +44,12 @@ app.use((req, res, next) => {
   }
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/api/v1/groceries", groceriesRoute);
 app.use("/api/v1/markets", marketsRoute);
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Loading of server
 app.listen(PORT, () => console.log(`Running express server on port ${PORT}`));

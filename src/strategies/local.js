@@ -6,7 +6,7 @@ const { comparePassword } = require("../utils/helpers");
 passport.serializeUser((user, done) => {
     console.log("Serializing user....");
     console.log(user);
-    done(null, user.id);
+    done(null, user.id); 
 });
 
 passport.deserializeUser( async (id, done) => {
