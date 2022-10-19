@@ -22,7 +22,7 @@ const { hashPassword, comparePassword } = require("../utils/helpers");
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
   console.log("Logged In");
-  res.send(200);
+  res.sendStatus(200);
 });
 
 router.post("/register", async (req, res) => {
